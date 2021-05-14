@@ -68,13 +68,13 @@ function run() {
         ejectItem();
     }
 
-    // dropAnItem(0, 2);
-    // dropAnItem(0, 2);
-    // dropAnItem(0, 2);
-    // dropAnItem(0, 2);
+    dropAnItem(0, 2);
+    dropAnItem(0, 2);
+    dropAnItem(0, 2);
+    dropAnItem(0, 2);
 
-    // dropAnItem(0, 2);
-    // dropAnItem(2, 4);
+    dropAnItem(0, 2);
+    dropAnItem(2, 4);
 
 }
 run();
