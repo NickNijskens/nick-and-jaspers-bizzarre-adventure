@@ -1,44 +1,62 @@
 "use strict";
 
 let stock = [];
-let on = true;
+let on = false;
 
-function fillMachine() {
-    for (let i = 0; i < 4; i++) {
-        stock[i] = [];
-        for (let j = 0; j < 6; j++) {
-            stock[i][j] = Math.ceil(Math.random() * 2);
+function run() {
+    let selectedItem;
+
+    function pressOnButton() {
+        on = !on;
+    }
+    pressOnButton();
+
+    function fillMachine() {
+        let index = 0;
+        for (let i = 0; i < 4; i++) {
+            stock[i] = [];
+            for (let j = 0; j < 6; j++) {
+                stock[i][j] = [Math.ceil(Math.random() * 2), index];
+                index++;
+            }
         }
     }
+    fillMachine();
+    console.log(stock);
+
+    function inputNumber(first, second) {
+        if (on) {
+            let input = second;
+            if (first !== 0) {
+                let f = first.toString();
+                let s = +second.toString();
+
+                input = parseInt(f + s);
+            }
+
+            if (input > 23) console.log("input out of bounds...");
+
+            stock.forEach(row => {
+                row.forEach(item => {
+                    if (item[1] === input);
+                    selectedItem = item;
+                });
+            });
+        }
+    }
+
+    // function ejectItem() {
+    //     if (on) {
+    //         if (selectedItem[0] === 0) console.log("No item was selected or Row is empty...");
+    //     }
+    // }
+
+    function dropAnItem(first, second) {
+        inputNumber(first, second);
+        //ejectItem();
+    }
+
+    dropAnItem(0, 2);
+
 }
-fillMachine();
-
-// function inputNumber(first, second) {
-//     let input;
-//     if (on) {
-//         input = second;
-//         if (first !== 0) {
-//             input = Integer.parseInt((String.valueOf(first) + String.valueOf(second)).trim());
-//         }
-
-//         if (input > 23) console.log("Input number is out of bounds...");
-
-//         stock.forEach(row => {
-//             row.forEach(element => {
-//                 if (collection.getLocation() == input) {
-
-//                     if (collection.getItems().get(0).getType() == "VOID") {
-//                         System.err.println("Selected Row is empty...");
-//                     } else {
-//                         returnItem = collection.getItems().get(0);
-//                         collection.getItems().remove(0);
-//                         collection.getItems().add(new Item(2));
-//                     }
-
-//                 }
-//             });
-//         });
-//     } else {
-//         console.log("Machine is off...");
-//     }
-// }
+run();
