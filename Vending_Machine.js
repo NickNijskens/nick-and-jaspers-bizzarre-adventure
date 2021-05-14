@@ -22,7 +22,21 @@ function run() {
         }
     }
     fillMachine();
-    console.log(stock);
+
+    function getStock() {
+        let returnStock = [];
+        let tempArray = [];
+
+        stock.forEach(row => {
+            tempArray = [];
+            row.forEach(item => {
+                tempArray.push(item[0]);
+            });
+            returnStock.push(tempArray);
+        });
+
+        console.log(returnStock);
+    }
 
     function inputNumber(first, second) {
         if (on) {
@@ -68,6 +82,7 @@ function run() {
         ejectItem();
     }
 
+    getStock();
     dropAnItem(0, 2);
     dropAnItem(0, 2);
     dropAnItem(0, 2);
