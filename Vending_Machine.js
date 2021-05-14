@@ -16,7 +16,7 @@ function run() {
         for (let i = 0; i < 4; i++) {
             stock[i] = [];
             for (let j = 0; j < 6; j++) {
-                stock[i][j] = [Math.ceil(Math.random() * 2), index];
+                stock[i][j] = [Math.ceil(Math.random() * 2), index, 4];
                 index++;
             }
         }
@@ -45,18 +45,36 @@ function run() {
         }
     }
 
-    // function ejectItem() {
-    //     if (on) {
-    //         if (selectedItem[0] === 0) console.log("No item was selected or Row is empty...");
-    //     }
-    // }
+    function ejectItem() {
+        if (on) {
+            if (selectedItem[0] === 0) {
+                console.log("No item was selected or Row is empty...");
+            } else if (selectedItem[0] === 1) {
+                selectedItem[2]--;
+                console.log("You got a DRINK from: " + selectedItem[1]);
+            } else if (selectedItem[0] === 2) {
+                selectedItem[2]--;
+                console.log("You got a COOKIE from: " + selectedItem[1]);
+            }
+
+            if (selectedItem[2] === 0) {
+                selectedItem[0] = 0;
+            }
+        }
+    }
 
     function dropAnItem(first, second) {
         inputNumber(first, second);
-        //ejectItem();
+        ejectItem();
     }
 
-    dropAnItem(0, 2);
+    // dropAnItem(0, 2);
+    // dropAnItem(0, 2);
+    // dropAnItem(0, 2);
+    // dropAnItem(0, 2);
+
+    // dropAnItem(0, 2);
+    // dropAnItem(2, 4);
 
 }
 run();
