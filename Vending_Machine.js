@@ -22,7 +22,6 @@ function run() {
         }
     }
     fillMachine();
-    console.log(stock);
 
     function inputNumber(first, second) {
         if (on) {
