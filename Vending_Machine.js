@@ -1,5 +1,7 @@
 "use strict";
 
+//Merge sort code van: https://stackabuse.com/merge-sort-in-javascript/
+
 let stock = [];
 let on = false;
 
@@ -9,7 +11,6 @@ function run() {
     function pressOnButton() {
         on = !on;
     }
-    pressOnButton();
 
     function fillMachine() {
         let index = 0;
@@ -21,7 +22,6 @@ function run() {
             }
         }
     }
-    fillMachine();
 
     function getStock() {
         let returnStock = [];
@@ -77,19 +77,56 @@ function run() {
         }
     }
 
+    function mergeSort(array) {
+        const half = array.length / 2;
+
+        // Base case or terminating case
+        if (array.length < 2) {
+            return array;
+        }
+
+        const left = array.splice(0, half);
+        return merge(mergeSort(left), mergeSort(array));
+    }
+
+    function merge(left, right) {
+        let arr = [];
+        // Break out of loop if any one of the array gets empty
+        while (left.length && right.length) {
+            // Pick the smaller among the smallest element of left and right sub arrays 
+            if (left[0] < right[0]) {
+                arr.push(left.shift());
+            } else {
+                arr.push(right.shift());
+            }
+        }
+
+        // Concatenating the leftover elements
+        // (in case we didn't go through the entire left or right array)
+        return [...arr, ...left, ...right];
+    }
+
     function dropAnItem(first, second) {
         inputNumber(first, second);
         ejectItem();
     }
 
-    getStock();
-    dropAnItem(0, 2);
-    dropAnItem(0, 2);
-    dropAnItem(0, 2);
-    dropAnItem(0, 2);
+    function execute() {
+        pressOnButton();
+        fillMachine();
+        mergeSort(stock);
 
-    dropAnItem(0, 2);
-    dropAnItem(2, 4);
+        getStock();
+        dropAnItem(0, 2);
+        dropAnItem(0, 2);
+        dropAnItem(0, 2);
+        dropAnItem(0, 2);
 
+        dropAnItem(0, 2);
+        dropAnItem(2, 4);
+    }
+
+    execute();
 }
+
 run();
