@@ -4,6 +4,7 @@
 
 let stock = [];
 let on = false;
+let items = [0.5, 1.5, 0.5, 1.24, 2.40, 0.75, 1.35, 2.00, 0.5, 0.75, 1.75, 1.05, 1.20, 5.00, 2.20, 1.25, 0.65, 0.34, 1.24, 1.44, 2.24, 5.50, 1.00];
 
 function run() {
     let selectedItem;
@@ -110,7 +111,7 @@ function run() {
     function execute() {
         pressOnButton();
         fillMachine();
-        //mergeSort(stock);
+        console.log(mergeSort(items));
 
         getStock();
         dropAnItem(0, 2);
