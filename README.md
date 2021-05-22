@@ -13,3 +13,5 @@ Deze Array kreeg dan Int waardes mee om op te slaan:
                                                         - Van welk type het object was
 
 De code is in JS hierdoor iets minder "straight forward" om te lezen.
+
+Github Repo: https://github.com/NickNijskens/nick-and-jaspers-bizzarre-adventure.git
