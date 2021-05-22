@@ -1,7 +1,10 @@
 "use strict";
 
+//Merge sort code van: https://stackabuse.com/merge-sort-in-javascript/
+
 let stock = [];
 let on = false;
+let items = [0.5, 1.5, 0.5, 1.24, 2.40, 0.75, 1.35, 2.00, 0.5, 0.75, 1.75, 1.05, 1.20, 5.00, 2.20, 1.25, 0.65, 0.34, 1.24, 1.44, 2.24, 5.50, 1.00];
 
 function run() {
     let selectedItem;
@@ -9,7 +12,6 @@ function run() {
     function pressOnButton() {
         on = !on;
     }
-    pressOnButton();
 
     function fillMachine() {
         let index = 0;
@@ -21,7 +23,6 @@ function run() {
             }
         }
     }
-    fillMachine();
 
     function getStock() {
         let returnStock = [];
@@ -77,21 +78,52 @@ function run() {
         }
     }
 
-    //Hier komt de merge sort function...
+    function mergeSort(array) {
+        const half = array.length / 2;
+
+        if (array.length < 2) {
+            return array;
+        }
+
+        const left = array.splice(0, half);
+        return merge(mergeSort(left), mergeSort(array));
+    }
+
+    function merge(left, right) {
+        let arr = [];
+
+        while (left.length && right.length) {
+            if (left[0] < right[0]) {
+                arr.push(left.shift());
+            } else {
+                arr.push(right.shift());
+            }
+        }
+
+        return [...arr, ...left, ...right];
+    }
 
     function dropAnItem(first, second) {
         inputNumber(first, second);
         ejectItem();
     }
 
-    getStock();
-    dropAnItem(0, 2);
-    dropAnItem(0, 2);
-    dropAnItem(0, 2);
-    dropAnItem(0, 2);
+    function execute() {
+        pressOnButton();
+        fillMachine();
+        console.log(mergeSort(items));
 
-    dropAnItem(0, 2);
-    dropAnItem(2, 4);
+        getStock();
+        dropAnItem(0, 2);
+        dropAnItem(0, 2);
+        dropAnItem(0, 2);
+        dropAnItem(0, 2);
 
+        dropAnItem(0, 2);
+        dropAnItem(2, 4);
+    }
+
+    execute();
 }
+
 run();
