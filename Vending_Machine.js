@@ -77,6 +77,8 @@ function run() {
         }
     }
 
+    //Hier komt de merge sort function...
+
     function dropAnItem(first, second) {
         inputNumber(first, second);
         ejectItem();
